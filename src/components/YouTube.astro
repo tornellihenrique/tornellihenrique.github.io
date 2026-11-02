@@ -1,0 +1,91 @@
+---
+interface Props {
+  id: string;
+  poster: string;
+  title: string;
+}
+
+const { id, poster, title } = Astro.props;
+---
+
+<youtube-facade class="youtube" data-id={id} data-title={title}>
+  <button class="youtube-play" type="button" aria-label={`Play ${title}`}>
+    <img src={poster} alt="" width="1280" height="720" loading="lazy" />
+    <span class="youtube-icon" aria-hidden="true"></span>
+  </button>
+</youtube-facade>
+
+<script>
+  class YouTubeFacade extends HTMLElement {
+    connectedCallback(): void {
+      this.querySelector('button')?.addEventListener('click', () => this.load(), { once: true });
+    }
+
+    private load(): void {
+      const frame = document.createElement('iframe');
+      frame.src = `https://www.youtube-nocookie.com/embed/${this.dataset.id}?autoplay=1`;
+      frame.title = this.dataset.title ?? 'Video';
+      frame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+      frame.allowFullscreen = true;
+      this.replaceChildren(frame);
+    }
+  }
+
+  customElements.define('youtube-facade', YouTubeFacade);
+</script>
+
+<style is:global>
+  youtube-facade {
+    display: block;
+    aspect-ratio: 16 / 9;
+    background: var(--surface);
+  }
+
+  youtube-facade iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+</style>
+
+<style>
+  .youtube-play {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+  }
+
+  .youtube-play img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .youtube-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    background: var(--accent);
+    transform: translate(-50%, -50%);
+  }
+
+  .youtube-icon::after {
+    position: absolute;
+    top: 50%;
+    left: 53%;
+    border-style: solid;
+    border-width: 13px 0 13px 21px;
+    border-color: transparent transparent transparent var(--accent-ink);
+    content: '';
+    transform: translate(-50%, -50%);
+  }
+</style>

@@ -1,0 +1,65 @@
+---
+import { experience, profile } from '../data/profile';
+---
+
+<section id="experience" class="page section" aria-labelledby="experience-title">
+  <div class="section-heading">
+    <h2 id="experience-title" class="section-title">Experience</h2>
+    <a class="section-note text-link" href={profile.cv}>Full CV</a>
+  </div>
+  <ul class="experience">
+    {experience.map((item) => (
+      <li class="experience-row">
+        <span class="experience-period">{item.period}</span>
+        <span class="experience-main">
+          <span class="experience-role">{item.role}</span>
+          <span class="experience-company">{item.company}</span>
+        </span>
+        <span class="experience-note">{item.note}</span>
+      </li>
+    ))}
+  </ul>
+</section>
+
+<style>
+  .experience-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4px;
+    padding-block: 16px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .experience-row:first-child {
+    padding-top: 0;
+  }
+
+  .experience-period {
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: 13px;
+  }
+
+  .experience-main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .experience-role {
+    font-weight: 600;
+  }
+
+  .experience-company,
+  .experience-note {
+    color: var(--muted);
+    font-size: 15px;
+  }
+
+  @media (min-width: 760px) {
+    .experience-row {
+      grid-template-columns: 120px minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 24px;
+      align-items: baseline;
+    }
+  }
+</style>

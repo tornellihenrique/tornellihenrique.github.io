@@ -1,0 +1,61 @@
+---
+import { codeSamples, profile } from '../data/profile';
+---
+
+<section id="code" class="page section" aria-labelledby="code-title">
+  <div class="section-heading">
+    <h2 id="code-title" class="section-title">Read the code</h2>
+    <a class="section-note text-link" href={profile.github}>GitHub</a>
+  </div>
+  <ul class="samples">
+    {codeSamples.map((sample) => (
+      <li>
+        <a class="sample" href={sample.href}>
+          <span class="sample-title">{sample.title}</span>
+          <span class="sample-text">{sample.text}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</section>
+
+<style>
+  .samples {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .sample {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    height: 100%;
+    padding: 20px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    text-decoration: none;
+    transition: border-color 0.15s ease;
+  }
+
+  .sample:hover {
+    border-color: var(--accent);
+  }
+
+  .sample-title {
+    font-family: var(--font-mono);
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .sample-text {
+    color: var(--muted);
+    font-size: 15px;
+  }
+
+  @media (min-width: 760px) {
+    .samples {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+</style>

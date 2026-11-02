@@ -1,0 +1,56 @@
+---
+import '@fontsource-variable/archivo/wdth.css';
+import '@fontsource-variable/jetbrains-mono';
+import '../styles/global.css';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { profile } from '../data/profile';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+}
+
+const { title, description, image = '/media/toolkit/cover.jpg' } = Astro.props;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+const imageUrl = new URL(image, Astro.site);
+const personSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: profile.fullName,
+  jobTitle: profile.role,
+  url: Astro.site,
+  sameAs: [profile.linkedin, profile.github],
+});
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0c0d0f" />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script is:inline type="application/ld+json" set:html={personSchema} />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+    <script>
+      import '../scripts/clips';
+    </script>
+  </body>
+</html>

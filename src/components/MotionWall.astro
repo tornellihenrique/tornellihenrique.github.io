@@ -1,0 +1,60 @@
+---
+import { motionWall, profile } from '../data/profile';
+import Clip from './Clip.astro';
+import YouTube from './YouTube.astro';
+---
+
+<section class="page section" aria-labelledby="motion-title">
+  <div class="section-heading">
+    <h2 id="motion-title" class="section-title">Systems in motion</h2>
+    <a class="section-note text-link" href="/work/movement-systems/">All movement systems</a>
+  </div>
+  {profile.reelYoutubeId && (
+    <div class="motion-reel">
+      <YouTube id={profile.reelYoutubeId} poster="/media/reel.jpg" title="Showreel" />
+    </div>
+  )}
+  <ul class="motion-wall">
+    {motionWall.map((item) => (
+      <li class="motion-wall-item">
+        <Clip src={item.src} label={item.label} />
+        <span class="motion-wall-label">{item.label}</span>
+      </li>
+    ))}
+  </ul>
+</section>
+
+<style>
+  .motion-reel {
+    margin-bottom: 8px;
+  }
+
+  .motion-wall {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .motion-wall-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius);
+  }
+
+  .motion-wall-label {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    padding: 2px 8px;
+    border-radius: 2px;
+    background: rgb(12 13 15 / 82%);
+    font-family: var(--font-mono);
+    font-size: 12px;
+  }
+
+  @media (min-width: 760px) {
+    .motion-wall {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+</style>

@@ -1,0 +1,30 @@
+{
+  "clips": [
+    { "out": "movement/vault", "src": "parkour-system/video.mp4", "start": 0.5, "duration": 8, "crop": "1380:776:190:304" },
+    { "out": "movement/zipline", "src": "parkour-system/video.mp4", "start": 20, "duration": 9, "crop": "1380:776:190:304" },
+    { "out": "movement/slide", "src": "parkour-system/video.mp4", "start": 33, "duration": 8, "crop": "1380:776:190:304" },
+    { "out": "movement/ladder", "src": "ladder-system/video.mp4", "start": 7, "duration": 9, "crop": "1380:776:190:304" },
+    { "out": "movement/cover", "src": "cover-system/video.mp4", "start": 3, "duration": 10, "crop": "1380:776:190:304" },
+    { "out": "movement/swim", "src": "swim-system/video.mp4", "start": 5, "duration": 10, "crop": "1380:776:190:150" },
+    { "out": "movement/parachute", "src": "parasuit/video.mp4", "start": 6, "duration": 8, "crop": "1380:776:190:150" },
+    { "out": "movement/carry", "src": "grapple-system/video.mp4", "start": 3, "duration": 9, "crop": "1380:776:190:304" },
+    { "out": "movement/takedown", "src": "grapple-system/video.mp4", "start": 34, "duration": 9, "crop": "1380:776:190:304" },
+    { "out": "movement/grappling-hook", "src": "grappling-hook/video.mp4", "start": 14, "duration": 10, "crop": "1680:945:120:40" },
+    { "out": "bunny-hopping/air-strafing", "src": "bunny-hopping/sandbox.mp4", "start": 34, "duration": 12, "crop": "1880:1057:20:23" },
+    { "out": "bunny-hopping/ballistics", "src": "bullet-system/video.mp4", "start": 22, "duration": 9, "crop": "1840:1035:40:45" },
+    { "out": "flag-capture/match", "src": "flag-capture/video.mp4", "start": 42, "duration": 10, "crop": "1145:644:100:80" }
+  ],
+  "images": [
+    { "out": "war-rock-2/cover", "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2883390/54aa0bc772f9b2df96220e34794443f150342148/ss_54aa0bc772f9b2df96220e34794443f150342148.1920x1080.jpg" },
+    { "out": "war-rock-2/shot-2", "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2883390/d67b07d675872f59815a98dc662194d1c3d476c6/ss_d67b07d675872f59815a98dc662194d1c3d476c6.1920x1080.jpg" },
+    { "out": "war-rock-2/shot-3", "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2883390/fdca70b64867144e58b81debe6e3b6fe83440f85/ss_fdca70b64867144e58b81debe6e3b6fe83440f85.1920x1080.jpg" },
+    { "out": "wyzards/cover", "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3536680/2abd091c0a55e6f86ac3cd1a62be67e4fccdefae/ss_2abd091c0a55e6f86ac3cd1a62be67e4fccdefae.1920x1080.jpg" },
+    { "out": "wyzards/shot-2", "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3536680/eb613db58b721c0c8e869b6eeb17397f2b453cbb/ss_eb613db58b721c0c8e869b6eeb17397f2b453cbb.1920x1080.jpg" },
+    { "out": "wyzards/shot-3", "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3536680/055163ed4cd5aea55efe1a63cf8931c7f7cbf176/ss_055163ed4cd5aea55efe1a63cf8931c7f7cbf176.1920x1080.jpg" },
+    { "out": "egg-smash/cover", "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4601710/a97dd86fb4b47bcddcac32c3c06c1a78ec856d46/ss_a97dd86fb4b47bcddcac32c3c06c1a78ec856d46.1920x1080.jpg" },
+    { "out": "egg-smash/shot-2", "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4601710/7a6bbf882c08d11bf20eea162aba2035eb585b46/ss_7a6bbf882c08d11bf20eea162aba2035eb585b46.1920x1080.jpg" },
+    { "out": "egg-smash/shot-3", "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4601710/3824660f62d283f10423796859a82a1c00411c81/ss_3824660f62d283f10423796859a82a1c00411c81.1920x1080.jpg" },
+    { "out": "toolkit/cover", "url": "https://i.ytimg.com/vi/QQMRwsrRWUQ/maxresdefault.jpg" },
+    { "out": "true-fps/cover", "url": "https://i.ytimg.com/vi/WImIDwkdnes/maxresdefault.jpg" }
+  ]
+}

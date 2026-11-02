@@ -1,0 +1,29 @@
+---
+interface Props {
+  src: string;
+  label: string;
+}
+
+const { src, label } = Astro.props;
+---
+
+<video
+  class="clip"
+  data-clip
+  src={`${src}.mp4`}
+  poster={`${src}.jpg`}
+  aria-label={label}
+  muted
+  loop
+  playsinline
+  preload="none"
+></video>
+
+<style>
+  .clip {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    background: var(--surface);
+  }
+</style>

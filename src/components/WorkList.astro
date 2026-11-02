@@ -1,0 +1,144 @@
+---
+import { getCollection } from 'astro:content';
+import { moreWork } from '../data/profile';
+import Clip from './Clip.astro';
+
+const work = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<section id="work" class="page section" aria-labelledby="work-title">
+  <div class="section-heading">
+    <h2 id="work-title" class="section-title">Selected work</h2>
+    <span class="section-note">{work.length} case studies</span>
+  </div>
+
+  <ul class="work-list">
+    {work.map((entry) => (
+      <li>
+        <a class="work-row" href={`/work/${entry.id}/`}>
+          <span class="work-media">
+            {entry.data.preview ? (
+              <Clip src={entry.data.preview} label={entry.data.title} />
+            ) : (
+              <img src={entry.data.cover} alt="" width="1280" height="720" loading="lazy" />
+            )}
+          </span>
+          <span class="work-body">
+            <span class="mono-label">{entry.data.kind} · {entry.data.period}</span>
+            <span class="work-title">{entry.data.title}</span>
+            <span class="work-tagline">{entry.data.tagline}</span>
+            <span class="work-role">{entry.data.role}</span>
+          </span>
+        </a>
+      </li>
+    ))}
+  </ul>
+
+  <h3 class="more-title">More projects</h3>
+  <ul class="more-list">
+    {moreWork.map((item) => (
+      <li class="more-item">
+        {item.href ? (
+          <a class="more-name text-link" href={item.href}>{item.title}</a>
+        ) : (
+          <span class="more-name">{item.title}</span>
+        )}
+        <p class="more-text">{item.text}</p>
+      </li>
+    ))}
+  </ul>
+</section>
+
+<style>
+  .work-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .work-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+    text-decoration: none;
+    transition: border-color 0.15s ease;
+  }
+
+  .work-row:hover {
+    border-color: var(--accent);
+  }
+
+  .work-media {
+    display: block;
+    min-width: 0;
+    aspect-ratio: 16 / 9;
+  }
+
+  .work-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .work-body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: center;
+    min-width: 0;
+    padding: clamp(18px, 3vw, 36px);
+  }
+
+  .work-title {
+    font-size: clamp(24px, 3vw, 34px);
+    font-weight: 700;
+    font-stretch: 112%;
+    line-height: 1.15;
+  }
+
+  .work-tagline {
+    color: var(--text);
+  }
+
+  .work-role {
+    color: var(--muted);
+    font-size: 15px;
+  }
+
+  .more-title {
+    margin-top: 48px;
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  .more-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 16px;
+  }
+
+  .more-name {
+    font-weight: 600;
+  }
+
+  .more-text {
+    margin-top: 2px;
+    color: var(--muted);
+    font-size: 15px;
+  }
+
+  @media (min-width: 760px) {
+    .work-row {
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    }
+
+    .more-list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px 40px;
+    }
+  }
+</style>

@@ -1,0 +1,83 @@
+---
+import { profile } from '../data/profile';
+
+const navigation = [
+  { label: 'Work', href: '/#work' },
+  { label: 'Code', href: '/#code' },
+  { label: 'Experience', href: '/#experience' },
+  { label: 'Contact', href: '/#contact' },
+];
+---
+
+<header class="site-header">
+  <div class="page site-header-row">
+    <a class="brand" href="/">{profile.name}</a>
+    <nav aria-label="Main">
+      <ul class="site-nav">
+        {navigation.map((item) => (
+          <li class="site-nav-item">
+            <a href={item.href}>{item.label}</a>
+          </li>
+        ))}
+        <li>
+          <a class="cv-link" href={profile.cv}>CV</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-bottom: 1px solid var(--line);
+    background: rgb(12 13 15 / 88%);
+    backdrop-filter: blur(10px);
+  }
+
+  .site-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 58px;
+  }
+
+  .brand {
+    font-weight: 700;
+    font-stretch: 112%;
+    text-decoration: none;
+  }
+
+  .site-nav {
+    display: flex;
+    align-items: center;
+    gap: clamp(14px, 3vw, 28px);
+    font-size: 15px;
+  }
+
+  .site-nav a {
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  .site-nav a:hover {
+    color: var(--text);
+  }
+
+  .site-nav .cv-link {
+    padding: 5px 12px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    color: var(--text);
+  }
+
+  @media (max-width: 560px) {
+    .site-nav-item {
+      display: none;
+    }
+  }
+</style>
