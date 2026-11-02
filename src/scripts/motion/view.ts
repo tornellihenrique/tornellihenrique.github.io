@@ -232,7 +232,7 @@ export class MotionView {
     const barWidth = 64;
     let top = 26;
 
-    context.font = "12px 'JetBrains Mono Variable', ui-monospace, monospace";
+    context.font = "500 13px 'Barlow', system-ui, sans-serif";
     context.textBaseline = 'middle';
     context.fillStyle = `rgba(${COLOR_TEXT}, 1)`;
     context.fillText('MOTION STACK', left, top);

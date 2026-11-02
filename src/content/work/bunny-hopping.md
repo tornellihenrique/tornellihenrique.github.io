@@ -1,11 +1,12 @@
 ---
 title: BunnyHopping
 tagline: Source-style air strafing inside a replicated first- and third-person FPS.
+group: project
 kind: Personal
 period: 2024 – 2025
 role: Solo project
 stack: [Unreal Engine 5, C++, Replication, Motion Warping, Slate]
-order: 6
+order: 9
 cover: /media/bunny-hopping/air-strafing.jpg
 preview: /media/bunny-hopping/air-strafing
 media:

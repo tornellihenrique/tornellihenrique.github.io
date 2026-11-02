@@ -1,14 +1,17 @@
 ---
 title: wYzards
 tagline: Multiplayer extraction RPG in Unreal Engine 5, built on GAS.
+group: game
 kind: Professional
 period: '2026'
 role: Gameplay Programmer, SL Games
 stack: [Unreal Engine 5, C++, Gameplay Ability System, Replication]
-order: 4
+order: 2
 cover: /media/wyzards/shot-2.jpg
-notice: The code and internal details are under NDA, so this page stays at the level of the work. Images come from the official Steam page.
+preview: /media/wyzards/trailer
+notice: The code and internal details are under NDA, so this page stays at the level of the work. Images and video come from the official Steam page and trailer.
 media:
+  - { type: youtube, id: YQ-7ijl1fg8, poster: /media/wyzards/video-trailer.jpg, caption: Official reveal gameplay trailer. }
   - { type: image, src: /media/wyzards/shot-2.jpg, caption: Official screenshot from the Steam page. }
   - { type: image, src: /media/wyzards/shot-3.jpg, caption: Official screenshot from the Steam page. }
 links:

@@ -1,18 +1,22 @@
 ---
 title: Egg Smash
 tagline: Networked party game in Unreal Engine 5, from my indie studio.
+group: game
 kind: Indie
 period: 2025 – present
-role: Co-founder, Gameplay Programmer, Layoff Studios
+role: Co-founder, Tech Lead, Layoff Studios
 stack: [UE 5.8, C++, Gameplay Ability System, Replication, Physics]
-order: 5
+order: 3
 cover: /media/egg-smash/cover.jpg
-notice: Images come from the official Steam page.
+preview: /media/egg-smash/trailer
+notice: Images and video come from the official Steam page and teaser.
 media:
+  - { type: youtube, id: IU_6KXvTviE, poster: /media/egg-smash/video-teaser.jpg, caption: Official teaser. }
   - { type: image, src: /media/egg-smash/cover.jpg, caption: Official screenshot from the Steam page. }
   - { type: image, src: /media/egg-smash/shot-2.jpg, caption: Official screenshot from the Steam page. }
 links:
   - { label: Egg Smash on Steam, href: 'https://store.steampowered.com/app/4601710' }
+  - { label: Layoff Studios, href: 'https://www.layoffstudio.com/' }
 ---
 
 ## Problem
@@ -29,8 +33,8 @@ A party game lives on chaos and quick rounds, but every client still has to agre
 
 ## Role
 
-Co-founder and gameplay programmer, responsible for the game mode framework and spectator mode, and working with the GAS capability layer alongside my partners.
+Co-founder and tech lead, responsible for the game mode framework and spectator mode, and working with the GAS capability layer alongside my partners.
 
 ## Result
 
-The first prototype secured BRL 50,000 in public funding from Sampa Games. The game has a public Steam page and is listed as coming soon.
+The first prototype was selected by the Sampa Games public call. The game has a public Steam page and is listed as coming soon.

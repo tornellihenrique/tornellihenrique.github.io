@@ -1,11 +1,12 @@
 ---
 title: FlagCapture
 tagline: Capture-the-flag multiplayer shooter on GAS, built in six days.
+group: project
 kind: Personal
 period: '2025'
 role: Solo project
 stack: [UE 5.5, C++, Gameplay Ability System, Replication]
-order: 8
+order: 12
 cover: /media/flag-capture/match.jpg
 preview: /media/flag-capture/match
 media:

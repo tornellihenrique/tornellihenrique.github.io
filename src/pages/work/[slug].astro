@@ -19,31 +19,37 @@ interface Props {
 }
 
 const { entry, next } = Astro.props;
-const { title, tagline, kind, period, role, stack, cover, notice, media, links } = entry.data;
+const { title, tagline, group, kind, period, role, stack, cover, notice, media, links } = entry.data;
+const backTargets = {
+  game: { href: '/#games', label: 'games' },
+  plugin: { href: '/#plugins', label: 'plugins' },
+  project: { href: '/#projects', label: 'projects' },
+};
+const { href: backHref, label: backLabel } = backTargets[group];
 const { Content } = await render(entry);
 ---
 
 <Base title={`${title} | ${profile.name}`} description={tagline} image={cover}>
   <article class="page case">
-    <a class="case-back mono-label" href="/#work">All work</a>
+    <a class="case-back label" href={backHref}>Back to {backLabel}</a>
     <header class="case-header">
-      <p class="mono-label">{kind} · {period}</p>
+      <p class="label">{kind} · {period}</p>
       <h1 class="case-title">{title}</h1>
       <p class="case-tagline">{tagline}</p>
     </header>
 
     <dl class="case-facts">
       <div>
-        <dt class="mono-label">Role</dt>
+        <dt class="label">Role</dt>
         <dd>{role}</dd>
       </div>
       <div>
-        <dt class="mono-label">Stack</dt>
+        <dt class="label">Stack</dt>
         <dd>{stack.join(', ')}</dd>
       </div>
       {links.length > 0 && (
         <div>
-          <dt class="mono-label">Links</dt>
+          <dt class="label">Links</dt>
           <dd class="case-links">
             {links.map((link) => (
               <a class="text-link" href={link.href}>{link.label}</a>
@@ -56,7 +62,7 @@ const { Content } = await render(entry);
     <ul class:list={['case-media', { 'case-media-grid': media.length > 2 }]}>
       {media.map((item) => (
         <li>
-          <figure class="case-figure">
+          <figure class="case-figure" id={item.type === 'clip' ? item.src.split('/').pop() : undefined}>
             {item.type === 'clip' && <Clip src={item.src} label={item.caption} />}
             {item.type === 'youtube' && <YouTube id={item.id} poster={item.poster} title={title} />}
             {item.type === 'image' && (
@@ -74,7 +80,7 @@ const { Content } = await render(entry);
     </div>
 
     <a class="case-next" href={`/work/${next.id}/`}>
-      <span class="mono-label">Next</span>
+      <span class="label">Next</span>
       <span class="case-next-title">{next.data.title}</span>
     </a>
   </article>
@@ -97,11 +103,10 @@ const { Content } = await render(entry);
   }
 
   .case-title {
-    font-size: clamp(38px, 6vw, 68px);
-    font-weight: 800;
-    font-stretch: 118%;
-    letter-spacing: -0.02em;
-    line-height: 1.04;
+    font-family: var(--font-display);
+    font-size: clamp(44px, 6.4vw, 76px);
+    font-weight: 700;
+    line-height: 1;
   }
 
   .case-tagline {
@@ -160,9 +165,9 @@ const { Content } = await render(entry);
 
   .case-content :global(h2) {
     margin: 36px 0 10px;
-    font-size: 24px;
+    font-family: var(--font-display);
+    font-size: 28px;
     font-weight: 700;
-    font-stretch: 112%;
   }
 
   .case-content :global(h2:first-child) {
@@ -211,9 +216,9 @@ const { Content } = await render(entry);
   }
 
   .case-next-title {
-    font-size: clamp(22px, 3vw, 30px);
+    font-family: var(--font-display);
+    font-size: clamp(26px, 3vw, 34px);
     font-weight: 700;
-    font-stretch: 112%;
   }
 
   @media (min-width: 760px) {

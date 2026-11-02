@@ -2,18 +2,19 @@
 import CodeSamples from '../components/CodeSamples.astro';
 import Contact from '../components/Contact.astro';
 import Experience from '../components/Experience.astro';
+import FeatureGrid from '../components/FeatureGrid.astro';
 import Hero from '../components/Hero.astro';
-import MotionWall from '../components/MotionWall.astro';
+import ProjectGrid from '../components/ProjectGrid.astro';
 import Specialties from '../components/Specialties.astro';
-import WorkList from '../components/WorkList.astro';
 import Base from '../layouts/Base.astro';
 import { profile } from '../data/profile';
 ---
 
 <Base title={`${profile.name} | ${profile.role}`} description={profile.description}>
   <Hero />
-  <MotionWall />
-  <WorkList />
+  <FeatureGrid id="games" title="Games" group="game" />
+  <FeatureGrid id="plugins" title="Plugins" group="plugin" />
+  <ProjectGrid />
   <Specialties />
   <CodeSamples />
   <Experience />

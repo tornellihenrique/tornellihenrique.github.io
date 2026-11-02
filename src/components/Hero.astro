@@ -1,45 +1,40 @@
 ---
-import { profile, proof } from '../data/profile';
+import { facts, profile } from '../data/profile';
 ---
 
-<section class="page hero">
-  <div class="hero-copy">
-    <p class="mono-label">{profile.role} · Unreal Engine 5 · C++</p>
-    <h1 class="hero-title">{profile.headline}</h1>
-    <p class="hero-summary">{profile.summary}</p>
-    <div class="hero-actions">
-      <a class="button button-primary" href="#work">See the work</a>
-      <a class="button" href={profile.cv}>Download CV</a>
-    </div>
-  </div>
+<section class="hero">
+  <canvas
+    id="motion-sketch"
+    class="hero-canvas"
+    tabindex="0"
+    role="img"
+    aria-label="Wireframe rifle moved by a live stack of procedural motion layers: offset, aim, idle, sway and recoil."
+  ></canvas>
 
-  <figure class="hero-sketch">
-    <canvas
-      id="motion-sketch"
-      class="hero-canvas"
-      tabindex="0"
-      role="img"
-      aria-label="Wireframe rifle moved by a live stack of procedural motion layers: offset, aim, idle, sway and recoil."
-    ></canvas>
-    <figcaption class="hero-sketch-footer">
-      <span class="hero-sketch-hint">
-        A live sketch of a procedural motion stack. Move to sway, click to fire, right-click to aim.
-      </span>
-      <span class="hero-sketch-controls">
+  <div class="page hero-overlay">
+    <div class="hero-copy">
+      <h1 class="hero-name">{profile.name}</h1>
+      <p class="hero-role">{profile.role}</p>
+      <p class="hero-stack">{profile.stack.join(' · ')}</p>
+      <ul class="hero-facts">
+        {facts.map((fact) => (
+          <li>{fact.href ? <a href={fact.href}>{fact.text}</a> : fact.text}</li>
+        ))}
+      </ul>
+      <div class="hero-actions">
+        <a class="button button-primary" href="#games">See the work</a>
+        <a class="button" href={profile.cv}>Download CV</a>
+      </div>
+    </div>
+
+    <div class="hero-play">
+      <p class="hero-hint">Move to sway. Click to fire. Right-click to aim.</p>
+      <div class="hero-controls">
         <button id="motion-fire" class="sketch-button" type="button">Fire</button>
         <button id="motion-aim" class="sketch-button" type="button">Aim</button>
-      </span>
-    </figcaption>
-  </figure>
-
-  <ul class="hero-proof">
-    {proof.map((item) => (
-      <li class="hero-proof-item">
-        <span class="hero-proof-value">{item.value}</span>
-        <span class="hero-proof-label">{item.label}</span>
-      </li>
-    ))}
-  </ul>
+      </div>
+    </div>
+  </div>
 </section>
 
 <script>
@@ -56,88 +51,126 @@ import { profile, proof } from '../data/profile';
 
 <style>
   .hero {
-    display: grid;
-    grid-template-columns: 1fr;
+    position: relative;
+    height: calc(100svh - 59px);
+    min-height: 520px;
+    overflow: hidden;
+  }
+
+  .hero-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    cursor: crosshair;
+    touch-action: pan-y;
+    user-select: none;
+  }
+
+  .hero::after {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgb(12 13 15 / 86%), transparent 50%);
+    content: '';
+    pointer-events: none;
+  }
+
+  .hero-overlay {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
     gap: 32px;
-    padding-top: clamp(32px, 6vw, 72px);
+    height: 100%;
+    padding-block: clamp(20px, 4vh, 44px);
+    pointer-events: none;
   }
 
   .hero-copy {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    justify-content: center;
+    gap: 6px;
     min-width: 0;
   }
 
-  .hero-title {
-    font-size: clamp(40px, 6.2vw, 72px);
-    font-weight: 800;
-    font-stretch: 118%;
-    letter-spacing: -0.02em;
-    line-height: 1.02;
+  .hero-name {
+    font-family: var(--font-display);
+    font-size: clamp(52px, 8vw, 104px);
+    font-weight: 700;
+    line-height: 0.95;
   }
 
-  .hero-summary {
-    max-width: 56ch;
+  .hero-role {
+    font-family: var(--font-display);
+    font-size: clamp(24px, 3vw, 34px);
+    font-weight: 600;
+    line-height: 1.15;
+  }
+
+  .hero-stack {
     color: var(--muted);
-    font-size: clamp(17px, 1.6vw, 19px);
+    font-size: 17px;
+  }
+
+  .hero-facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px 20px;
+    margin-top: 10px;
+    color: var(--muted);
+    font-size: 15px;
+  }
+
+  .hero-facts a {
+    pointer-events: auto;
+    text-decoration-color: var(--line);
+    text-underline-offset: 3px;
+  }
+
+  .hero-facts a:hover {
+    color: var(--text);
   }
 
   .hero-actions {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
+    margin-top: 16px;
+    pointer-events: auto;
   }
 
-  .hero-sketch {
-    margin: 0;
-    min-width: 0;
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    background: var(--surface);
-  }
-
-  .hero-canvas {
-    width: 100%;
-    height: clamp(280px, 62vw, 460px);
-    cursor: crosshair;
-    touch-action: pan-y;
-    user-select: none;
-  }
-
-  .hero-sketch-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 10px 14px;
-    border-top: 1px solid var(--line);
-  }
-
-  .hero-sketch-hint {
-    color: var(--muted);
-    font-family: var(--font-mono);
-    font-size: 12px;
-    line-height: 1.45;
-  }
-
-  .hero-sketch-controls {
+  .hero-play {
     display: flex;
     flex: none;
+    flex-direction: column;
+    align-items: flex-end;
     gap: 8px;
+  }
+
+  .hero-hint {
+    color: var(--muted);
+    font-size: 14px;
+    text-align: right;
+  }
+
+  .hero-controls {
+    display: flex;
+    gap: 8px;
+    pointer-events: auto;
   }
 
   .sketch-button {
     min-width: 58px;
     min-height: 40px;
-    padding: 4px 10px;
+    padding: 4px 12px;
     border: 1px solid var(--line);
     border-radius: var(--radius);
-    background: transparent;
+    background: rgb(12 13 15 / 70%);
     color: var(--text);
-    font-family: var(--font-mono);
-    font-size: 13px;
+    font: inherit;
+    font-size: 15px;
+    font-weight: 500;
     cursor: pointer;
     touch-action: none;
     user-select: none;
@@ -148,64 +181,27 @@ import { profile, proof } from '../data/profile';
     border-color: var(--accent);
   }
 
-  .hero-proof {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-  }
-
-  .hero-proof-item {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    padding: 16px;
-    border-bottom: 1px solid var(--line);
-  }
-
-  .hero-proof-item:nth-child(odd) {
-    border-right: 1px solid var(--line);
-  }
-
-  .hero-proof-item:nth-last-child(-n + 2) {
-    border-bottom: 0;
-  }
-
-  .hero-proof-value {
-    font-size: clamp(24px, 3vw, 32px);
-    font-weight: 700;
-    font-stretch: 112%;
-    line-height: 1.15;
-  }
-
-  .hero-proof-label {
-    color: var(--muted);
-    font-size: 14px;
-    line-height: 1.35;
-  }
-
-  @media (min-width: 960px) {
-    .hero {
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
-      gap: 40px;
+  @media (max-width: 760px) {
+    .hero::after {
+      background: linear-gradient(to top, rgb(12 13 15 / 94%) 30%, transparent 72%);
     }
 
-    .hero-proof {
-      grid-column: 1 / -1;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+    .hero-overlay {
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: flex-end;
+      gap: 16px;
     }
 
-    .hero-proof-item,
-    .hero-proof-item:nth-last-child(-n + 2) {
-      border-bottom: 0;
+    .hero-play {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      order: -1;
     }
 
-    .hero-proof-item:nth-child(odd) {
-      border-right: 0;
-    }
-
-    .hero-proof-item:not(:last-child) {
-      border-right: 1px solid var(--line);
+    .hero-hint {
+      text-align: left;
     }
   }
 </style>

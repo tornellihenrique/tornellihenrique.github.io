@@ -1,14 +1,18 @@
 ---
 title: War Rock 2
 tagline: Realistic multiplayer FPS in Unreal Engine 5.
+group: game
 kind: Professional
 period: 2023 – present
 role: Senior Gameplay Programmer, Nevith Games
 stack: [Unreal Engine 5, C++, Replication, Animation, AI]
 order: 1
 cover: /media/war-rock-2/shot-3.jpg
-notice: The code and internal details are under NDA, so this page stays at the level of the work. Images come from the official Steam page.
+preview: /media/war-rock-2/gameplay
+notice: The code and internal details are under NDA, so this page stays at the level of the work. Images come from the official Steam page, and videos are public gameplay from YouTube.
 media:
+  - { type: youtube, id: EjQIjE7haF4, poster: /media/war-rock-2/video-gameplay.jpg, caption: Public gameplay introduction. }
+  - { type: youtube, id: -hzRQbuX138, poster: /media/war-rock-2/video-map.jpg, caption: Public map showcase. }
   - { type: image, src: /media/war-rock-2/shot-3.jpg, caption: Official screenshot from the Steam page. }
   - { type: image, src: /media/war-rock-2/cover.jpg, caption: Official screenshot from the Steam page. }
 links:
@@ -31,7 +35,7 @@ A realistic shooter depends on characters that move, aim and react convincingly 
 
 Senior Gameplay Programmer on contract, working remotely with a team in South Korea. Beyond the systems above, I worked on predicted equipment, reload and stance flows, weapons, ballistics, recoil, attachments, damage, knockdown and revive, ragdoll, spectator replication, match flow, lobby and UI, and on engine upgrades to UE 5.7 and 5.8.
 
-In 2025 I also learned Unity on the job and built character control, a skill system, audio, touch controls and a plant-and-defuse mode for a mobile shooter inspired by Valorant.
+In 2025 I also worked in Unity on a [mobile shooter](/work/mobile-shooter/) for the same studio.
 
 ## Result
 

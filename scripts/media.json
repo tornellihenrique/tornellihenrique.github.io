@@ -12,7 +12,16 @@
     { "out": "movement/grappling-hook", "src": "grappling-hook/video.mp4", "start": 14, "duration": 10, "crop": "1680:945:120:40" },
     { "out": "bunny-hopping/air-strafing", "src": "bunny-hopping/sandbox.mp4", "start": 34, "duration": 12, "crop": "1880:1057:20:23" },
     { "out": "bunny-hopping/ballistics", "src": "bullet-system/video.mp4", "start": 22, "duration": 9, "crop": "1840:1035:40:45" },
-    { "out": "flag-capture/match", "src": "flag-capture/video.mp4", "start": 42, "duration": 10, "crop": "1145:644:100:80" }
+    { "out": "flag-capture/match", "src": "flag-capture/video.mp4", "start": 42, "duration": 10, "crop": "1145:644:100:80" },
+    { "out": "war-rock-2/gameplay", "src": "war-rock-2/video.mp4", "start": 54, "duration": 7, "crop": "1280:720:0:0" },
+    { "out": "toolkit/motion", "src": "toolkit/video.mp4", "start": 36, "duration": 8, "crop": "1440:810:480:270" },
+    { "out": "true-fps/motion", "src": "true-fps/video.mp4", "start": 104, "duration": 9, "crop": "1280:720:300:195" },
+    { "out": "spatial-inventory/grid", "src": "spatial-inventory/video.mp4", "start": 15, "duration": 9, "crop": "1440:810:480:120" },
+    { "out": "lyra-tutorial/start", "src": "lyra-tutorial/video.mp4", "start": 72, "duration": 8, "crop": "1840:1035:40:0" },
+    { "out": "wyzards/trailer", "src": "wyzards/video.mp4", "start": 22, "duration": 8, "crop": "1680:945:120:0" },
+    { "out": "egg-smash/trailer", "src": "egg-smash/video.mp4", "start": 16, "duration": 8, "crop": "1680:945:120:0" },
+    { "out": "reima/combat", "src": "project-reima/video.mp4", "start": 60, "duration": 9, "crop": "1550:872:200:110" },
+    { "out": "first-person-prototype/handling", "src": "fps-prototype-als/video.mp4", "start": 20, "duration": 9, "crop": "1680:945:180:70" }
   ],
   "images": [
     { "out": "war-rock-2/cover", "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2883390/54aa0bc772f9b2df96220e34794443f150342148/ss_54aa0bc772f9b2df96220e34794443f150342148.1920x1080.jpg" },
@@ -25,6 +34,11 @@
     { "out": "egg-smash/shot-2", "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4601710/7a6bbf882c08d11bf20eea162aba2035eb585b46/ss_7a6bbf882c08d11bf20eea162aba2035eb585b46.1920x1080.jpg" },
     { "out": "egg-smash/shot-3", "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4601710/3824660f62d283f10423796859a82a1c00411c81/ss_3824660f62d283f10423796859a82a1c00411c81.1920x1080.jpg" },
     { "out": "toolkit/cover", "url": "https://i.ytimg.com/vi/QQMRwsrRWUQ/maxresdefault.jpg" },
-    { "out": "true-fps/cover", "url": "https://i.ytimg.com/vi/WImIDwkdnes/maxresdefault.jpg" }
+    { "out": "true-fps/cover", "url": "https://i.ytimg.com/vi/WImIDwkdnes/maxresdefault.jpg" },
+    { "out": "war-rock-2/video-gameplay", "url": "https://i.ytimg.com/vi/EjQIjE7haF4/hqdefault.jpg" },
+    { "out": "war-rock-2/video-map", "url": "https://i.ytimg.com/vi/-hzRQbuX138/hqdefault.jpg" },
+    { "out": "wyzards/video-trailer", "url": "https://i.ytimg.com/vi/YQ-7ijl1fg8/hqdefault.jpg" },
+    { "out": "egg-smash/video-teaser", "url": "https://i.ytimg.com/vi/IU_6KXvTviE/hqdefault.jpg" },
+    { "out": "spatial-inventory/cover", "url": "https://i.ytimg.com/vi/vCpvA-fIlDM/hqdefault.jpg" }
   ]
 }

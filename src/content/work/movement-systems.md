@@ -1,11 +1,12 @@
 ---
 title: Movement systems
 tagline: Eight replicated traversal systems, each one a self-contained component.
+group: project
 kind: Prototype
 period: '2023'
 role: Gameplay Programmer
 stack: [Unreal Engine 5, C++, Replication, Motion Warping, IK, Control Rig]
-order: 3
+order: 11
 cover: /media/movement/zipline.jpg
 preview: /media/movement/zipline
 notice: Prototype footage from gray-box test maps.

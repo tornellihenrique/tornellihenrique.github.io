@@ -11,11 +11,18 @@ import { experience, profile } from '../data/profile';
     {experience.map((item) => (
       <li class="experience-row">
         <span class="experience-period">{item.period}</span>
-        <span class="experience-main">
-          <span class="experience-role">{item.role}</span>
-          <span class="experience-company">{item.company}</span>
-        </span>
-        <span class="experience-note">{item.note}</span>
+        <div class="experience-body">
+          <h3 class="experience-role">{item.role}</h3>
+          <p class="experience-company">{item.company}</p>
+          <p class="experience-text">{item.text}</p>
+          {item.links.length > 0 && (
+            <p class="experience-links">
+              {item.links.map((link) => (
+                <a class="text-link" href={link.href}>{link.label}</a>
+              ))}
+            </p>
+          )}
+        </div>
       </li>
     ))}
   </ul>
@@ -26,7 +33,7 @@ import { experience, profile } from '../data/profile';
     display: grid;
     grid-template-columns: 1fr;
     gap: 4px;
-    padding-block: 16px;
+    padding-block: 20px;
     border-bottom: 1px solid var(--line);
   }
 
@@ -34,30 +41,37 @@ import { experience, profile } from '../data/profile';
     padding-top: 0;
   }
 
-  .experience-period {
-    color: var(--muted);
-    font-family: var(--font-mono);
-    font-size: 13px;
-  }
-
-  .experience-main {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .experience-role {
-    font-weight: 600;
-  }
-
-  .experience-company,
-  .experience-note {
+  .experience-period,
+  .experience-company {
     color: var(--muted);
     font-size: 15px;
   }
 
+  .experience-role {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .experience-text {
+    max-width: 78ch;
+    margin-top: 8px;
+    font-size: 16px;
+  }
+
+  .experience-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px 16px;
+    margin-top: 8px;
+    font-size: 15px;
+    font-weight: 500;
+  }
+
   @media (min-width: 760px) {
     .experience-row {
-      grid-template-columns: 120px minmax(0, 1fr) minmax(0, 1.2fr);
+      grid-template-columns: 120px minmax(0, 1fr);
       gap: 24px;
       align-items: baseline;
     }

@@ -8,6 +8,7 @@ import { profile } from '../data/profile';
   <p class="contact-links">
     <a class="text-link" href={profile.linkedin}>LinkedIn</a>
     <a class="text-link" href={profile.github}>GitHub</a>
+    <a class="text-link" href={profile.studio}>Layoff Studios</a>
     <a class="text-link" href={profile.cv}>CV</a>
   </p>
   <p class="contact-note">Based in {profile.location}. {profile.languages}.</p>
@@ -15,11 +16,10 @@ import { profile } from '../data/profile';
 
 <style>
   .contact-title {
-    font-size: clamp(38px, 6vw, 64px);
-    font-weight: 800;
-    font-stretch: 118%;
-    letter-spacing: -0.02em;
-    line-height: 1.05;
+    font-family: var(--font-display);
+    font-size: clamp(44px, 6.4vw, 72px);
+    font-weight: 700;
+    line-height: 1;
   }
 
   .contact-email {
@@ -35,8 +35,8 @@ import { profile } from '../data/profile';
     flex-wrap: wrap;
     gap: 20px;
     margin-top: 20px;
-    font-family: var(--font-mono);
-    font-size: 14px;
+    font-size: 16px;
+    font-weight: 500;
   }
 
   .contact-note {

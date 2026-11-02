@@ -1,12 +1,14 @@
 ---
 title: True FPS System
 tagline: Replicated UE5 first-person shooter plugin whose public demo led to my hiring.
+group: plugin
 kind: Open source
 period: '2023'
 role: Plugin developer
 stack: [UE 5.1, C++, Animation, Replication]
 order: 7
 cover: /media/true-fps/cover.jpg
+preview: /media/true-fps/motion
 media:
   - { type: youtube, id: WImIDwkdnes, poster: /media/true-fps/cover.jpg, caption: Public demo. }
 links:

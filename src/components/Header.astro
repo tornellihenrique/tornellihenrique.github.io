@@ -2,7 +2,9 @@
 import { profile } from '../data/profile';
 
 const navigation = [
-  { label: 'Work', href: '/#work' },
+  { label: 'Games', href: '/#games' },
+  { label: 'Plugins', href: '/#plugins' },
+  { label: 'Projects', href: '/#projects' },
   { label: 'Code', href: '/#code' },
   { label: 'Experience', href: '/#experience' },
   { label: 'Contact', href: '/#contact' },
@@ -46,8 +48,9 @@ const navigation = [
   }
 
   .brand {
+    font-family: var(--font-display);
+    font-size: 21px;
     font-weight: 700;
-    font-stretch: 112%;
     text-decoration: none;
   }
 
@@ -75,7 +78,7 @@ const navigation = [
     color: var(--text);
   }
 
-  @media (max-width: 560px) {
+  @media (max-width: 680px) {
     .site-nav-item {
       display: none;
     }

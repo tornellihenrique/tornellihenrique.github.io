@@ -1,12 +1,14 @@
 ---
 title: Procedural First Person Toolkit
 tagline: Commercial UE5 C++ plugin that composes first-person item motion onto a single bone.
+group: plugin
 kind: Commercial
 period: 2026 – present
 role: Co-founder, Plugin Developer
 stack: [UE 5.6 – 5.8, C++, Animation nodes, Slate, Replication]
-order: 2
+order: 6
 cover: /media/toolkit/cover.jpg
+preview: /media/toolkit/motion
 media:
   - { type: youtube, id: QQMRwsrRWUQ, poster: /media/toolkit/cover.jpg, caption: Product showcase. }
 links:

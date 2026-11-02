@@ -41,7 +41,8 @@ import { specialties } from '../data/profile';
   }
 
   .specialty-title {
-    font-size: 20px;
+    font-family: var(--font-display);
+    font-size: 24px;
     font-weight: 700;
   }
 
@@ -54,9 +55,9 @@ import { specialties } from '../data/profile';
   .specialty-proof {
     display: flex;
     flex-wrap: wrap;
-    gap: 4px 16px;
-    font-family: var(--font-mono);
-    font-size: 13px;
+    gap: 2px 14px;
+    font-size: 15px;
+    font-weight: 500;
   }
 
   @media (min-width: 640px) {
@@ -65,9 +66,9 @@ import { specialties } from '../data/profile';
     }
   }
 
-  @media (min-width: 960px) {
+  @media (min-width: 1040px) {
     .specialties {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(4, minmax(0, 1fr));
     }
   }
 </style>
