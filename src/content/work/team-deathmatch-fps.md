@@ -11,6 +11,8 @@ preview: /media/team-deathmatch/match
 media:
   - { type: clip, src: /media/team-deathmatch/match, caption: A match with friends. }
   - { type: clip, src: /media/team-deathmatch/lobby, caption: 'Server browser, lobby, team selection and spawn.' }
+links:
+  - { label: Source on GitHub, href: 'https://github.com/tornellihenrique/TeamDeathmatchFPS' }
 ---
 
 ## Problem

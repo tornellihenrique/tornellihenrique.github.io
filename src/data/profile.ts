@@ -218,6 +218,11 @@ export const codeSamples = [
     href: 'https://github.com/tornellihenrique/TrueFPSSystemPlugin',
   },
   {
+    title: 'TeamDeathmatchFPS',
+    text: 'Complete two-team multiplayer FPS: server browser, lobby, Steam sessions and invites, match phases and spectator.',
+    href: 'https://github.com/tornellihenrique/TeamDeathmatchFPS',
+  },
+  {
     title: 'FPSGame',
     text: 'The project from my live course, with an early version of the procedural motion node and equipment framework.',
     href: 'https://github.com/tornellihenrique/FPSGame',
@@ -236,11 +241,6 @@ export const codeSamples = [
     title: 'spatial-inventory-basic',
     text: 'Replicated grid inventory in C++, with items as replicated subobjects and a replaceable UI layer.',
     href: 'https://github.com/tornellihenrique/spatial-inventory-basic',
-  },
-  {
-    title: 'ALS-Refactored Manny',
-    text: 'Slide, prone and camera limits on an open source locomotion system, networked through saved moves.',
-    href: 'https://github.com/SlapStudios/ALS-Refactored-Manny',
   },
 ];
 
