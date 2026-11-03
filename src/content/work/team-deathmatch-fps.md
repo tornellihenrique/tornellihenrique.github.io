@@ -7,6 +7,10 @@ period: '2025'
 role: Solo project
 stack: [UE 5.6, C++, Replication, Steam sessions, Animation]
 order: 8
+preview: /media/team-deathmatch/match
+media:
+  - { type: clip, src: /media/team-deathmatch/match, caption: A match with friends. }
+  - { type: clip, src: /media/team-deathmatch/lobby, caption: 'Server browser, lobby, team selection and spawn.' }
 ---
 
 ## Problem

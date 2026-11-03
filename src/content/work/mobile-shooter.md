@@ -7,6 +7,10 @@ period: '2025'
 role: Senior Gameplay Programmer, Nevith Games
 stack: [Unity, C#, Animation, Mobile]
 order: 5
+preview: /media/mobile-shooter/weapons
+media:
+  - { type: clip, src: /media/mobile-shooter/weapons, caption: 'First-person weapon handling: rifle, reload and pistol. Recorded in a sandbox with prototype assets.' }
+  - { type: clip, src: /media/mobile-shooter/abilities, caption: First-person abilities cast by hand. }
 notice: The code and internal details are under NDA, so this page stays at the level of the work.
 ---
 

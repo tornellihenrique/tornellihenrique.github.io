@@ -8,8 +8,10 @@ role: Co-founder, Plugin Developer
 stack: [UE 5.6 – 5.8, C++, Animation nodes, Slate, Replication]
 order: 6
 cover: /media/toolkit/cover.jpg
-preview: /media/toolkit/motion
+preview: /media/toolkit/gameplay
 media:
+  - { type: clip, src: /media/toolkit/gameplay, caption: 'Firing, reloading, aiming and swapping weapons in the demo project.' }
+  - { type: clip, src: /media/toolkit/tools, caption: 'Editor tools in Play: the preset editor changes recoil, offsets and more live, and the motion inspector shows and mutes each motion component.' }
   - { type: youtube, id: QQMRwsrRWUQ, poster: /media/toolkit/cover.jpg, caption: Product showcase. }
 links:
   - { label: Toolkit on Fab, href: 'https://www.fab.com/listings/fff00e95-8fec-4985-8da5-b4b9b7c45034' }

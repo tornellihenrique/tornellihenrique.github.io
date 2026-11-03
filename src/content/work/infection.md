@@ -7,6 +7,10 @@ period: '2026'
 role: Co-founder, Tech Lead, Layoff Studios
 stack: [UE 5.8, C++, Gameplay Ability System, Replication, Animation]
 order: 4
+preview: /media/infection/gameplay
+media:
+  - { type: clip, src: /media/infection/gameplay, caption: 'Firing, reloading and aiming against test enemies in a sandbox map.' }
+  - { type: clip, src: /media/infection/workbench, caption: 'Equipment workbench: weapons and attachments edited with a live preview, then one click into a Play session with only that weapon and the chosen attachments.' }
 links:
   - { label: Layoff Studios, href: 'https://www.layoffstudio.com/' }
 ---
@@ -21,7 +25,8 @@ A co-op shooter has to feel instant for each player while the server stays in ch
 - Built the firearm gameplay layer: aiming, reloading, hitscan and projectile firing, spread and recoil integration.
 - Built server-authoritative throwables with client-side flight simulation.
 - Built a centralized damage subsystem for bullets, explosives and thrown items.
-- Built in-game debug tools and Slate editors for weapon definitions.
+- Built synchronized first- and third-person bodies, with per-weapon linked animation layers.
+- Built in-game debug tools and an equipment workbench editor with a live preview and one-click play testing.
 
 ## Role
 

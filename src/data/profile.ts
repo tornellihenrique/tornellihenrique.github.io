@@ -32,6 +32,7 @@ export const projects: ProjectTile[] = [
     title: 'Team Deathmatch FPS',
     text: 'Lobby, Steam sessions, seamless travel and spectator',
     href: '/work/team-deathmatch-fps/',
+    clip: '/media/team-deathmatch/match',
   },
   {
     title: 'BunnyHopping',
@@ -133,6 +134,7 @@ export const projects: ProjectTile[] = [
     title: 'ALS-Refactored Manny',
     text: 'Open source retarget of 130+ animations',
     href: 'https://github.com/SlapStudios/ALS-Refactored-Manny',
+    clip: '/media/als-manny/movement',
   },
   {
     title: 'UE5 FPS live course',

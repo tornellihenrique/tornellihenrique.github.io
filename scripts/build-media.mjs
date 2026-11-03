@@ -18,21 +18,30 @@ if (!sourceDir) {
 const CLIP_SIZE = '1280:720';
 const POSTER_OFFSET_SECONDS = 1.5;
 
-async function buildClip({ out, src, start, duration, crop }) {
+function maskFilter({ x, y, w, h }) {
+  return `delogo=x=${x}:y=${y}:w=${w}:h=${h}`;
+}
+
+function timedMaskFilter(mask) {
+  return mask.from === undefined ? maskFilter(mask) : `${maskFilter(mask)}:enable='gte(t,${mask.from})'`;
+}
+
+async function buildClip({ out, src, start, duration, crop, masks = [] }) {
   const input = path.join(sourceDir, src);
   const target = path.join(outputDir, `${out}.mp4`);
   await mkdir(path.dirname(target), { recursive: true });
 
-  const filters = `crop=${crop},scale=${CLIP_SIZE},fps=30`;
+  const filters = [...masks.map(timedMaskFilter), `crop=${crop}`, `scale=${CLIP_SIZE}`, 'fps=30'].join(',');
   await run(ffmpegPath, [
     '-y', '-loglevel', 'error', '-ss', String(start), '-t', String(duration), '-i', input,
     '-an', '-vf', filters, '-c:v', 'libx264', '-crf', '27', '-preset', 'slow',
     '-pix_fmt', 'yuv420p', '-movflags', '+faststart', target,
   ]);
 
+  const posterMasks = masks.filter(({ from = 0 }) => from <= POSTER_OFFSET_SECONDS).map(maskFilter);
   await run(ffmpegPath, [
     '-y', '-loglevel', 'error', '-ss', String(start + POSTER_OFFSET_SECONDS), '-i', input,
-    '-frames:v', '1', '-vf', `crop=${crop},scale=${CLIP_SIZE}`, '-q:v', '4',
+    '-frames:v', '1', '-vf', [...posterMasks, `crop=${crop}`, `scale=${CLIP_SIZE}`].join(','), '-q:v', '4',
     path.join(outputDir, `${out}.jpg`),
   ]);
 }
