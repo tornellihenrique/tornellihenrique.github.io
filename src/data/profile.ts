@@ -140,6 +140,7 @@ export const projects: ProjectTile[] = [
     title: 'UE5 FPS live course',
     text: 'Seven free live streams, 22+ hours',
     href: 'https://www.youtube.com/watch?v=F5eLJ72xXeY',
+    clip: '/media/live-course/stream',
   },
   {
     title: 'Lyra tutorial',

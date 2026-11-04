@@ -22,8 +22,18 @@ function maskFilter({ x, y, w, h }) {
   return `delogo=x=${x}:y=${y}:w=${w}:h=${h}`;
 }
 
+function maskWindow({ from, to }) {
+  if (to !== undefined) return `between(t,${from ?? 0},${to})`;
+  return from === undefined ? undefined : `gte(t,${from})`;
+}
+
 function timedMaskFilter(mask) {
-  return mask.from === undefined ? maskFilter(mask) : `${maskFilter(mask)}:enable='gte(t,${mask.from})'`;
+  const window = maskWindow(mask);
+  return window === undefined ? maskFilter(mask) : `${maskFilter(mask)}:enable='${window}'`;
+}
+
+function isMaskActiveAt({ from = 0, to = Infinity }, time) {
+  return from <= time && time <= to;
 }
 
 async function buildClip({ out, src, start, duration, crop, masks = [] }) {
@@ -38,7 +48,7 @@ async function buildClip({ out, src, start, duration, crop, masks = [] }) {
     '-pix_fmt', 'yuv420p', '-movflags', '+faststart', target,
   ]);
 
-  const posterMasks = masks.filter(({ from = 0 }) => from <= POSTER_OFFSET_SECONDS).map(maskFilter);
+  const posterMasks = masks.filter((mask) => isMaskActiveAt(mask, POSTER_OFFSET_SECONDS)).map(maskFilter);
   await run(ffmpegPath, [
     '-y', '-loglevel', 'error', '-ss', String(start + POSTER_OFFSET_SECONDS), '-i', input,
     '-frames:v', '1', '-vf', [...posterMasks, `crop=${crop}`, `scale=${CLIP_SIZE}`].join(','), '-q:v', '4',
