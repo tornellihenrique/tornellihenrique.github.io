@@ -12,24 +12,24 @@ preview: /media/reima/combat
 media:
   - { type: clip, src: /media/reima/combat, caption: Third-person combat against test dummies. }
 ---
+Reima was a personal combat prototype from 2024, built alone, to connect locomotion, equipment, weapons and a vehicle in one playable sandbox.
 
-## Problem
+## Character
 
-A combat prototype needs the character, the equipment and the weapons to work as one system in both first and third person.
+I retargeted ALS to the Unreal Engine 5 Manny skeleton and integrated it with Metahuman. On top of ALS I added a limp overlay for an old man's walk.
 
-## Approach
+## First and third person
 
-- Retargeted ALS to the UE5 Manny skeleton and integrated it with Metahuman.
-- Built the first- and third-person presentation, with weapons holstered on the back.
-- Built a spatial inventory with equippable slots for clothes and weapons.
-- Built explosive projectiles, bullet physics, damage and death, tested against dummies.
-- Built a vehicle that the character can enter, drive and exit, with transition animations.
-- Built a limp overlay on top of ALS for an old-man gait.
+The character plays in both views, and weapons that are not in use stay holstered on the back.
 
-## Role
+## Equipment
 
-Solo project.
+A spatial inventory with equippable slots for clothes and weapons.
 
-## Result
+## Combat
 
-A playable combat sandbox connecting locomotion, equipment, weapons and a vehicle.
+Explosive projectiles, bullet physics, damage and death, tested against training dummies.
+
+## Vehicle
+
+The character can enter a vehicle, drive it and get out, with transition animations for each step.

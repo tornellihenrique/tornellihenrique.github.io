@@ -19,7 +19,7 @@ interface Props {
 }
 
 const { entry, next } = Astro.props;
-const { title, tagline, group, kind, period, role, stack, cover, notice, media, links } = entry.data;
+const { title, tagline, group, period, role, stack, cover, notice, media, links } = entry.data;
 const backTargets = {
   game: { href: '/#games', label: 'games' },
   plugin: { href: '/#plugins', label: 'plugins' },
@@ -33,31 +33,18 @@ const { Content } = await render(entry);
   <article class="page case">
     <a class="case-back label" href={backHref}>Back to {backLabel}</a>
     <header class="case-header">
-      <p class="label">{kind} · {period}</p>
       <h1 class="case-title">{title}</h1>
       <p class="case-tagline">{tagline}</p>
-    </header>
-
-    <dl class="case-facts">
-      <div>
-        <dt class="label">Role</dt>
-        <dd>{role}</dd>
-      </div>
-      <div>
-        <dt class="label">Stack</dt>
-        <dd>{stack.join(', ')}</dd>
-      </div>
+      <p class="case-meta">{role}, {period}</p>
+      <p class="case-meta">{stack.join(', ')}</p>
       {links.length > 0 && (
-        <div>
-          <dt class="label">Links</dt>
-          <dd class="case-links">
-            {links.map((link) => (
-              <a class="text-link" href={link.href}>{link.label}</a>
-            ))}
-          </dd>
-        </div>
+        <p class="case-links">
+          {links.map((link) => (
+            <a class="text-link" href={link.href}>{link.label}</a>
+          ))}
+        </p>
       )}
-    </dl>
+    </header>
 
     <ul class:list={['case-media', { 'case-media-grid': media.length > 2 }]}>
       {media.map((item) => (
@@ -98,8 +85,9 @@ const { Content } = await render(entry);
   .case-header {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 6px;
     margin-top: 28px;
+    margin-bottom: 36px;
   }
 
   .case-title {
@@ -111,28 +99,22 @@ const { Content } = await render(entry);
 
   .case-tagline {
     max-width: 60ch;
-    color: var(--muted);
+    margin: 4px 0 10px;
     font-size: clamp(18px, 2vw, 21px);
     line-height: 1.4;
   }
 
-  .case-facts {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 16px;
-    margin: 32px 0;
-    padding-block: 16px;
-    border-block: 1px solid var(--line);
-  }
-
-  .case-facts dd {
-    margin: 2px 0 0;
+  .case-meta {
+    color: var(--muted);
     font-size: 15px;
   }
 
   .case-links {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 2px 20px;
+    margin-top: 6px;
+    font-size: 15px;
   }
 
   .case-media {
@@ -164,30 +146,42 @@ const { Content } = await render(entry);
   }
 
   .case-content :global(h2) {
-    margin: 36px 0 10px;
+    margin: 40px 0 8px;
     font-family: var(--font-display);
-    font-size: 28px;
+    font-size: 26px;
     font-weight: 700;
-  }
-
-  .case-content :global(h2:first-child) {
-    margin-top: 0;
+    line-height: 1.2;
   }
 
   .case-content :global(p) {
-    margin-bottom: 12px;
+    margin-bottom: 16px;
+    line-height: 1.7;
+  }
+
+  .case-content :global(p:first-child) {
+    font-size: 19px;
   }
 
   .case-content :global(ul) {
     display: flex;
     flex-direction: column;
     gap: 8px;
+    margin-bottom: 16px;
     padding-left: 20px;
-    list-style: square;
+    list-style: disc;
   }
 
   .case-content :global(li::marker) {
+    color: var(--muted);
+  }
+
+  .case-content :global(a) {
     color: var(--accent);
+    text-underline-offset: 3px;
+  }
+
+  .case-content :global(code) {
+    font-size: 0.9em;
   }
 
   .case-notice {
@@ -222,11 +216,6 @@ const { Content } = await render(entry);
   }
 
   @media (min-width: 760px) {
-    .case-facts {
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.2fr) minmax(0, 1fr);
-      gap: 32px;
-    }
-
     .case-media-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }

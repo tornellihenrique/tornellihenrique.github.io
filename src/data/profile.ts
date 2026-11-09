@@ -157,60 +157,9 @@ const link = {
   infection: { label: 'Infection', href: '/work/infection/' },
   mobileShooter: { label: 'Mobile shooter', href: '/work/mobile-shooter/' },
   toolkit: { label: 'Toolkit', href: '/work/procedural-first-person-toolkit/' },
-  trueFps: { label: 'True FPS System', href: '/work/true-fps-system/' },
-  teamDeathmatch: { label: 'Team Deathmatch FPS', href: '/work/team-deathmatch-fps/' },
-  bunnyHopping: { label: 'BunnyHopping', href: '/work/bunny-hopping/' },
   movement: { label: 'Movement systems', href: '/work/movement-systems/' },
-  flagCapture: { label: 'FlagCapture', href: '/work/flag-capture/' },
-  spatialInventory: { label: 'Spatial Inventory', href: '/work/spatial-inventory/' },
-  alsManny: { label: 'ALS-Refactored Manny', href: 'https://github.com/SlapStudios/ALS-Refactored-Manny' },
-  liveCourse: { label: 'Live course', href: 'https://www.youtube.com/watch?v=F5eLJ72xXeY' },
-  lyraTutorial: { label: 'Lyra tutorial', href: 'https://www.youtube.com/watch?v=oQvWl-bi8pI' },
   studio: { label: 'Layoff Studios', href: profile.studio },
 };
-
-export const specialties = [
-  {
-    title: 'Animation',
-    text: 'First- and third-person locomotion, custom animation nodes, procedural weapon motion, IK and retargeting.',
-    proof: [link.toolkit, link.warRock, link.trueFps, link.bunnyHopping, link.alsManny, link.infection],
-  },
-  {
-    title: 'Movement',
-    text: 'Vault, mantle, slide, ladders, swimming, cover and grappling on the Character Movement Component.',
-    proof: [link.movement, link.warRock, link.bunnyHopping, link.alsManny],
-  },
-  {
-    title: 'Networking',
-    text: 'Client prediction, saved moves, lag-compensated hit validation, replicated physics, Steam sessions and lobbies.',
-    proof: [link.eggSmash, link.bunnyHopping, link.teamDeathmatch, link.infection, link.spatialInventory],
-  },
-  {
-    title: 'Gameplay Ability System',
-    text: 'Ability cast types, damage flows, predicted equipment and replicated attack telegraphs.',
-    proof: [link.wyzards, link.infection, link.eggSmash, link.flagCapture, link.lyraTutorial],
-  },
-  {
-    title: 'AI',
-    text: 'Soldier AI from scratch: controllers, behavior trees, EQS, team senses and spawners.',
-    proof: [link.warRock],
-  },
-  {
-    title: 'Tools',
-    text: 'Slate editor tools for rig setup, validation, live motion inspection and item definitions.',
-    proof: [link.toolkit, link.infection, link.bunnyHopping],
-  },
-  {
-    title: 'Unity',
-    text: 'First- and third-person character control and animation, skills, audio and touch controls in C#.',
-    proof: [link.mobileShooter],
-  },
-  {
-    title: 'Teaching',
-    text: 'Free tutorials and live streams about FPS development and Lyra, in Portuguese and English.',
-    proof: [link.lyraTutorial, link.liveCourse],
-  },
-];
 
 export const codeSamples = [
   {

@@ -18,23 +18,34 @@ links:
   - { label: Egg Smash on Steam, href: 'https://store.steampowered.com/app/4601710' }
   - { label: Layoff Studios, href: 'https://www.layoffstudio.com/' }
 ---
+Egg Smash is a networked party game in Unreal Engine 5.8, C++ and the Gameplay Ability System, from Layoff Studios, the indie studio I co-founded. In the Omelet mode, eggs try to knock each other out. A defeated egg rolls a random transformation, and players who are out become spectators who can still drop props into the arena.
 
-## Problem
+The first prototype was selected by the Sampa Games public funding call. We then restarted the project from scratch. In the new version I own the game mode framework, the base egg and the spectator mode. My partners work on the ability layer, the transformations, projectiles, knockback, targeting, camera and UI.
 
-A party game lives on chaos and quick rounds, but every client still has to agree on what happened. Physics props, match flow and eliminated players all need to stay in sync without getting in the way of the fun.
+## Match flow in phases
 
-## Approach
+The match runs as a sequence of phases, adapted from Lyra's game phase system. Phases live on the game state as abilities, and their list replicates to every client, which receives phase ends before phase starts. On top of that sits the match state: rounds, participants, spawning and objectives, replicated as one structure whose messages are handled in order. The core only offers these services. The rules of each mode live in Blueprint inside a game feature plugin, so a new mode does not change the framework.
 
-- Designed and built the phase-driven match flow, adapting Lyra's game phase system.
-- Built replicated physics props with Predictive Interpolation, freeze and release, and dormancy.
-- Built an RTS-style spectator mode with a bounded flight area and server-validated cursor drops.
-- Built a transformation roll with server-owned results and client reroll and lock requests.
-- Wrote the architecture decision records and flow guides for the game mode framework.
+In a three-machine test session in the editor, the loop ran three matches and 14 rounds, with 26 players turning into spectators and 37 transformations across all four forms.
 
-## Role
+## Transformation roll
 
-Co-founder and tech lead, responsible for the game mode framework and spectator mode, and working with the GAS capability layer alongside my partners.
+A defeated egg rolls a transformation from tiers and can reroll or lock the result. The server owns the result. Reroll and lock requests from the client carry the id of the roll, so the server ignores any request that arrives for an older roll.
 
-## Result
+## Health and death
 
-The first prototype was selected by the Sampa Games public call. The game has a public Steam page and is listed as coming soon.
+The health component and the death ability follow Lyra's approach, adapted to the game's rules.
+
+## Physics props
+
+Physics props have to look the same on every client. The props use Predictive Interpolation with stronger quantization, freeze on an identical transform on every machine, and go dormant when at rest. Physics runs asynchronously at 60 Hz.
+
+## Spectator mode
+
+Players who are out get an RTS-style camera inside a bounded flight area, with a queue of props to drop into the match. The client picks the drop point with its cursor, and the server runs the same targeting preset again to validate the point before spawning anything.
+
+## Tools and documentation
+
+I built the debugger and editor tools for the mode: placement helpers, visualizers and a graph view. I also wrote five of the six architecture decision records and five of the six implementation plans, plus the flow guides for the game mode framework.
+
+Egg Smash has a public Steam page and is listed as coming soon.

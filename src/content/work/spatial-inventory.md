@@ -15,22 +15,12 @@ links:
   - { label: Watch on YouTube, href: 'https://www.youtube.com/watch?v=vCpvA-fIlDM' }
   - { label: Source on GitHub, href: 'https://github.com/tornellihenrique/spatial-inventory-basic' }
 ---
+A grid inventory where items have a size and can be rotated, built alone in C++ in 2022. The source is public on GitHub.
 
-## Problem
+## Items and the grid
 
-A spatial inventory has to keep placement rules on the server while dragging and rotating items still feels immediate. It also shouldn't tie the game to one specific UI.
+Items are replicated objects owned by an inventory container. The container keeps a 2D occupancy grid, and rotating an item swaps its width and height. The server validates every placement, so a client can never put an item where it does not fit.
 
-## Approach
+## UI
 
-- Built items as replicated UObjects owned by an inventory container.
-- Built a 2D occupancy grid where rotation swaps width and height, with placement validated on the server.
-- Built a component-based interaction layer, so any widget can act as the UI.
-- Built a simple UMG inventory with drag and drop, hover preview and invalid placement feedback.
-
-## Role
-
-Solo project, in C++.
-
-## Result
-
-A reusable replicated inventory, with the source public on GitHub.
+The inventory does not depend on one UI. An interaction component sits between the inventory and the screen, so any widget can act as the interface. The sample UI is a simple UMG inventory with drag and drop, a preview while hovering and feedback for invalid placements.

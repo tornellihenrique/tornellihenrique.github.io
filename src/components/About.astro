@@ -1,0 +1,45 @@
+---
+import { profile } from '../data/profile';
+---
+
+<section id="about" class="page section" aria-labelledby="about-title">
+  <div class="section-heading">
+    <h2 id="about-title" class="section-title">About</h2>
+  </div>
+  <div class="about">
+    <p>
+      I'm a gameplay programmer from Brazil. Since 2023 I have worked remotely for Nevith Games, a studio in South
+      Korea, on <a href="/work/war-rock-2/">War Rock 2</a>, a realistic multiplayer FPS in Unreal Engine 5. Most of my
+      work there is on traversal plugins, first- and third-person locomotion and animation, and the soldier AI. In 2025 I also worked in Unity on a <a href="/work/mobile-shooter/">mobile shooter</a> for the same
+      studio, and from April to October 2026 I worked at SL Games on <a href="/work/wyzards/">wYzards</a>, an
+      extraction RPG built on the Gameplay Ability System.
+    </p>
+    <p>
+      Outside client work, I co-founded <a href={profile.studio}>Layoff Studios</a>, where I lead the technical side of
+      <a href="/work/egg-smash/">Egg Smash</a> and <a href="/work/infection/">Infection</a>. I also designed and built
+      the <a href="/work/procedural-first-person-toolkit/">Procedural First Person Toolkit</a>, a UE5 plugin sold on
+      Fab, and I have taught FPS development in free live streams and YouTube tutorials.
+    </p>
+    <p>
+      Before games, I spent five years as a back-end and full-stack developer in Java and Angular, ending as software
+      architect and tech lead of a speech analytics platform. That background is why I build gameplay features as
+      self-contained components with data assets, with editor tools so content can change without new code.
+    </p>
+  </div>
+</section>
+
+<style>
+  .about {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 72ch;
+    font-size: 18px;
+    line-height: 1.7;
+  }
+
+  .about a {
+    color: var(--accent);
+    text-underline-offset: 3px;
+  }
+</style>

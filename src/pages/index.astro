@@ -1,11 +1,11 @@
 ---
+import About from '../components/About.astro';
 import CodeSamples from '../components/CodeSamples.astro';
 import Contact from '../components/Contact.astro';
 import Experience from '../components/Experience.astro';
 import FeatureGrid from '../components/FeatureGrid.astro';
 import Hero from '../components/Hero.astro';
 import ProjectGrid from '../components/ProjectGrid.astro';
-import Specialties from '../components/Specialties.astro';
 import Base from '../layouts/Base.astro';
 import { profile } from '../data/profile';
 ---
@@ -15,7 +15,7 @@ import { profile } from '../data/profile';
   <FeatureGrid id="games" title="Games" group="game" />
   <FeatureGrid id="plugins" title="Plugins" group="plugin" />
   <ProjectGrid />
-  <Specialties />
+  <About />
   <CodeSamples />
   <Experience />
   <Contact />

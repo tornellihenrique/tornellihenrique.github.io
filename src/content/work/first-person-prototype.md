@@ -13,22 +13,20 @@ notice: Prototype footage from gray-box test maps.
 media:
   - { type: clip, src: /media/first-person-prototype/handling, caption: Weapon handling in first person. }
 ---
+A first-person prototype from 2023, built on top of ALS and upgraded to Unreal Engine 5.2 during development. The goal was to give a locomotion system made for third person a first-person weapon feel, with everything replicated.
 
-## Problem
+## First-person presentation
 
-A locomotion system built for third person doesn't give first-person weapon handling on its own. Aiming, offsets and near-wall behavior all have to feel right, and everything still needs to replicate.
+Aim states, animation offsets and wall avoidance, so the weapon behaves well up close.
 
-## Approach
+## Weapons and throwables
 
-- Built first-person presentation on top of ALS, with aim states, animation offsets and wall avoidance.
-- Built replicated projectile weapons, grenades and throwables, with projectile piercing.
-- Built a generic item layer, so weapons and equipment share hold, use, equip and drop behavior.
-- Built attachments, manual reload, and the damage, health and death flow.
+Replicated projectile weapons with piercing, grenades and other throwables.
 
-## Role
+## Items
 
-Gameplay programmer, working on first-person feel and the weapon and item layer.
+A generic item layer, so weapons and equipment share the same hold, use, equip and drop behavior.
 
-## Result
+## Handling and damage
 
-A replicated first-person base, upgraded to UE 5.2 during development.
+Attachments, a manual reload, and the damage, health and death flow.

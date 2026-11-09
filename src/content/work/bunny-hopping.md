@@ -15,23 +15,40 @@ media:
 links:
   - { label: BulletSystem on GitHub, href: 'https://github.com/tornellihenrique/BulletSystem' }
 ---
+BunnyHopping started as an experiment: recreating the air strafing from Source games on top of a modern Unreal Engine 5 movement stack. It grew into my largest personal project, a replicated shooter in first and third person with about 68,000 lines of C++ across the game and my own plugins, built on ALS-Refactored. It has a Battle mode with two teams and a scoreboard, and a Sandbox mode with an open world and origin rebasing.
 
-## Problem
+## Air strafing and auto-hop
 
-Air strafing looks simple, but it depends on details of how velocity is projected and accelerated each frame. The goal was to recreate that feel on a modern UE5 movement stack, then grow it into a complete FPS.
+Each frame, the movement projects the velocity onto the direction the player wants to go and accelerates only the part that is missing to reach the maximum air speed. That is what lets a player gain speed by turning in the air. Auto-hop chains jumps without spending a single frame on the ground, so friction and the walking speed limit never apply.
 
-## Approach
+## Vault
 
-- Built Source-style air strafing and auto-hop on top of the ALS-Refactored movement component.
-- Built a seven-type vault system with Motion Warping and data-driven settings.
-- Built a procedural weapon animation node with offset, ADS, additives, sway, recoil and collision.
-- Built physically simulated ballistics with drag, wind, penetration, ricochet, water and actor pooling.
-- Built lag-compensated hit validation, team matches, a significance system and a Slate recoil editor.
+Seven vault types, on the ground and in the air, with Motion Warping and settings in data assets.
 
-## Role
+## Camera and aiming
 
-Solo project, built on top of ALS-Refactored and third-party plugins for specific features.
+The player can switch between first and third person. Aiming supports scopes, a dolly zoom and camera modifiers for focus and for taking damage.
 
-## Result
+## True first-person animation
 
-About 68,000 lines of C++ across the game and my own plugins, with Battle and Sandbox modes. The ballistics were later cut out into BulletSystem, my public code sample.
+The weapon is driven by an animation node that applies offset, ADS, additives, sway, recoil and wall collision on a full-body mesh. The ADS alignment is extracted from the pose. Character meshes are modular, built from parts in a preset, with visibility per view.
+
+## Significance
+
+Characters fall into five distance bands, scaled by the field of view, and each band changes tick rate, LOD, hitboxes and shadows.
+
+## Weapons and ballistics
+
+Firing is local-first, with ammo, reloading, fire modes, attachments on rails and melee. Bullets are simulated physically in sub-steps, with drag, wind, penetration, ricochet, simulation in water and actor pooling. I later cut the ballistics out into [BulletSystem](https://github.com/tornellihenrique/BulletSystem), my public code sample.
+
+## Networking
+
+The server validates hits with lag compensation, on top of time sync between client and server and replication managers.
+
+## Match, interaction and UI
+
+Battle has match phases, a player state machine, teams, a scoreboard, spectating and respawn. Sandbox has a spawn queue. Interaction picks the best target by score. There is a minimap, a fullscreen map and a loading screen.
+
+## Tools
+
+29 console variables, console commands, cheats and a recoil editor in Slate.

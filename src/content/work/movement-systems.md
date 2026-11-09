@@ -1,6 +1,6 @@
 ---
 title: Movement systems
-tagline: Eight replicated traversal systems, each one a self-contained component.
+tagline: Replicated traversal features, each one a self-contained component.
 group: project
 kind: Prototype
 period: '2023'
@@ -22,27 +22,40 @@ media:
   - { type: clip, src: /media/movement/carry, caption: Carry and drag with synced animation. }
   - { type: clip, src: /media/movement/takedown, caption: Takedown with hand IK and semi-ragdoll. }
 ---
+In 2023 I built a set of traversal features for a realistic shooter. Each one is a separate component with its own interfaces and data assets, so a character gets a feature by adding a component, without new code in the character class. All of them replicate, and I tested each one in network sessions. They later moved into production as self-contained plugins. The clips below were recorded in gray-box test maps.
 
-## Problem
+## Vault
 
-Traversal touches movement, animation, camera and networking at once. Every new ability has to work with the others without piling more logic into the character class.
+Traces check the obstacle before the vault starts, and Motion Warping fits the animation to the obstacle that is actually there, so the same animation works on obstacles of different sizes.
 
-## Approach
+## Slide
 
-- Each feature is a component with interfaces and data assets, so a character opts in without new code in the Pawn.
-- **Vault and slide:** trace-based validation, Motion Warping and configurable slope behavior.
-- **Zipline:** spline-based, with vertical lines, oscillation, a character weight simulation and hand IK.
-- **Ladder:** procedural rung IK, modular spline ladders, climb from the top, and a pipe variant.
-- **Cover:** trace detection, corners, manual and automatic leaning through Control Rig, and moves between covers.
-- **Swim:** water volumes, a buoyancy helper and transitions over and under the surface.
-- **Skydive and parachute:** dedicated animation instances, auto-open and velocity prediction for the local player.
-- **Grappling hook:** physics pull with a one-handed state machine, so the weapon stays usable.
-- **Carry, drag and takedown:** synced two-actor animation, hand IK, semi-ragdoll and a procedural Sequencer camera.
+The slide takes the slope under the character into account, with the behavior set in a data asset, and the player can keep aiming while sliding.
 
-## Role
+## Zipline
 
-I designed and built all eight systems, with replication tested across network sessions.
+The line follows a spline, so it can curve, run downhill or go fully vertical. While the character hangs from it, the line oscillates and responds to the character's weight through a small simulation, and hand IK keeps both hands on the cable.
 
-## Result
+## Ladder
 
-The systems moved into production as self-contained plugins.
+Ladders are modular and built along a spline, so one asset covers any height. Procedural IK places the hands and feet on the rungs during the climb. The character can also get on from the top, and a pipe variant uses the same system.
+
+## Cover
+
+Traces find cover around the player. The character follows corners, moves from one cover to the next and swaps shoulders. Leaning works both manually and automatically, driven by Control Rig.
+
+## Swimming
+
+Water volumes switch the character into swimming, a buoyancy helper keeps it at the surface, and transitions handle going under the water and coming back up.
+
+## Skydive and parachute
+
+Free fall and the parachute have their own animation instances. The parachute can open by itself, and the local player's movement uses velocity prediction so it stays smooth on the owning client.
+
+## Grappling hook
+
+The hook pulls the character with physics. It runs on a one-handed state machine, so the weapon stays usable during the pull.
+
+## Carry, drag and takedown
+
+These need two characters to play one animation together. The animations are synced between both actors, hand IK keeps the contact points in place, the target goes into a semi-ragdoll, and a procedural Sequencer camera frames the takedown.

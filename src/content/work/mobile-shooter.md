@@ -13,22 +13,28 @@ media:
   - { type: clip, src: /media/mobile-shooter/abilities, caption: First-person abilities cast by hand. }
 notice: The code and internal details are under NDA, so this page stays at the level of the work.
 ---
+From August to December 2025, Nevith Games took on an outsourced project: an online mobile shooter in Unity, inspired by Valorant. I worked on it in C# while continuing on War Rock 2, first on two playable prototypes and then on the final game.
 
-## Problem
+## First- and third-person character
 
-A mobile shooter needs sharp first-person handling, readable third-person characters and controls that work well on a touch screen.
+I built the character controller and the animation in both views. In first person, the weapon motion comes from additive and procedural layers driven by animation curves, and I wrote an editor window that extracts those curves from animations. For third person I built a set of animation tools for the character. The two views render through a dual-mesh setup with a custom render feature, so the local player sees first-person arms while everyone else sees the full body.
 
-## Approach
+## Skills
 
-- Built first- and third-person character control and animation, with additive and procedural layers.
-- Built a skill system, audio, pooled effects and mobile touch controls.
-- Built a plant-and-defuse mode and per-region death reactions in the prototypes.
-- Worked on lobby, loading and in-game UI integration for the final game.
+I built the skill system, where each skill commits in phases.
 
-## Role
+## Touch controls
 
-Gameplay programmer on an outsourced project, from August to December 2025. I implemented the animation logic in the prototypes, and it was then carried into the final game, where I also worked on UI integration and general gameplay fixes.
+I built the mobile touch controls.
 
-## Result
+## Audio and effects
 
-Two playable prototypes and animation logic that moved into the final game.
+I built the audio layer and pooled visual effects.
+
+## Combat and modes
+
+I built projectiles and impacts, a plant-and-defuse mode and death reactions by body region in the prototypes.
+
+## The final game
+
+The animation logic I wrote in the prototypes was carried into the final game. There I worked on the lobby, the loading screen and in-game UI integration, and on general gameplay fixes.

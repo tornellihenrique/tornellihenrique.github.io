@@ -17,23 +17,30 @@ media:
 links:
   - { label: wYzards on Steam, href: 'https://store.steampowered.com/app/3536680' }
 ---
+wYzards is a multiplayer extraction RPG in Unreal Engine 5 from SL Games, built heavily on the Gameplay Ability System. I worked there as a Gameplay Programmer on contract from April to October 2026, on the core gameplay systems, and designed and built several large systems on my own.
 
-## Problem
+## Character and skill systems
 
-An extraction RPG keeps adding abilities, monsters and world interactions. The systems underneath have to stay consistent as the content grows.
+My first months went into refactoring the character and skill systems, the base that every character and ability in the game runs on.
 
-## Approach
+## Ability cast types
 
-- Refactored the character and skill systems.
-- Planned and implemented ability cast types and migrated every existing ability to them.
-- Refactored world interaction across eight interaction types.
-- Unified knockback logic and collision rules for projectiles and area attacks.
-- Built local ability indicators and replicated monster attack telegraphs.
+I planned and implemented a set of cast types for abilities, then migrated every existing ability in the game to them.
 
-## Role
+## World interaction
 
-Gameplay Programmer on contract from April to October 2026, working on the core gameplay systems of the project.
+I refactored the world interaction system, covering eight interaction types.
 
-## Result
+## Combat rules
 
-Every existing ability moved to the new cast types, and knockback and collision rules now live in one place. wYzards has a public Steam page and is listed as coming soon.
+I unified the knockback logic and the collision rules for projectiles and area attacks, moved their settings into configuration tables, and made the character turn to face its target more responsively.
+
+## Indicators and telegraphs
+
+I built local ability indicators for the player and replicated attack telegraphs for monsters, so every player sees where an attack is going to land.
+
+## Audio and fixes
+
+I also worked on audio integration and on bug fixing, including a crash on player death.
+
+wYzards has a public Steam page and is listed as coming soon.

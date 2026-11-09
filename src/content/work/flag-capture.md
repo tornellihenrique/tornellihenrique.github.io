@@ -14,22 +14,24 @@ media:
 links:
   - { label: Source on GitHub, href: 'https://github.com/tornellihenrique/FlagCapture' }
 ---
+FlagCapture was a technical test for a job interview: a two-team capture-the-flag match, first to three captures, built on the Gameplay Ability System with proper multiplayer. I built it alone in six days in February 2025, with 36 hours logged, in Unreal Engine 5.5. The source is public on GitHub.
 
-## Problem
+## Ability System
 
-A technical test with a short deadline: a two-team capture-the-flag match, first to three captures, on the Gameplay Ability System and with proper multiplayer.
+The Ability System Component lives on the PlayerState in Mixed replication mode, with two attribute sets, abilities bound to input and target data sent from the client. The abilities and effects themselves are Blueprint assets on top of that C++ layer.
 
-## Approach
+## Damage
 
-- Built the GAS layer: Ability System Component on the PlayerState, attribute sets, damage execution and ability grants.
-- Built a phase-driven match loop with replicated timers, team captures and a spectator flow.
-- Built predicted movement through custom saved-move flags for sprint and aim.
-- Kept flag grab, drop and capture on the server, with events sent to every client.
+Damage goes through an execution calculation into a meta damage attribute. Headshots deal double damage, detected by tag and bone, and a match rule controls friendly fire.
 
-## Role
+## The flag
 
-Solo project, with 36 hours logged over six days.
+There is one flag. Any player picks it up by touching it, drops it on death, and captures it by carrying it into their own team's spawn area. The server decides every grab, drop and capture and sends the events to all clients.
 
-## Result
+## Match flow and teams
 
-A complete match loop from team selection to the third capture, with the source public on GitHub.
+The match moves through phases from waiting for players to the next game, replicated with the push model, and ends at three captures. New players join the smaller team automatically. Each player has a state machine for playing, dead and spectating.
+
+## Movement and camera
+
+Sprint and aim are flags in the saved move, so they are predicted like the rest of the movement. The camera sits on a socket of the full-body mesh, with its animation driven by curves. The spectator camera has a dynamic field of view and keeps its target between lives, and a dead player can choose to respawn next to the teammate being watched.
